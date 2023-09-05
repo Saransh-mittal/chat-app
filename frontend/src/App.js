@@ -1,8 +1,15 @@
 import './App.css';
-
+import {Routes, Route} from "react-router-dom";
+import Login from './screens/Login';
+import Chat from './screens/Chat';
 function App() {
   return (
-    <>Hello</>
+    <>
+    <Routes>
+      <Route path='/' element={<Login/>}/>
+      <Route path='/chat' element={<Chat/>}/>
+    </Routes>
+    </>
   );
 }
 
