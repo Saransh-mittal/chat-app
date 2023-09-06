@@ -47,10 +47,23 @@ const authUser = asyncHandler(async (req,res) =>{
     const user = await User.findOne({email});
     if(!user){
         res.status(400);
-        throw new Error("Wrong credentials");
+        throw new Error("Incorrect Credentials");
     }
 
-    
+    if((await user.matchPassword(password)))
+    {
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email:user.email,
+            pic: user.pic,
+            token: generateToken(user._id)
+        });
+    }
+    else{
+        res.status(400);
+        throw new Error("Incorrect Credentials");
+    }
 });
 
-module.exports = {registerUser};
+module.exports = {registerUser, authUser};

@@ -5,6 +5,7 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 const userRoutes = require("./routes/userRoutes");
+const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 
 connectDB();
 app.get('/',(req,res)=>{
@@ -12,6 +13,8 @@ app.get('/',(req,res)=>{
 });
 
 app.use('/api/user', userRoutes);
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT;
 app.listen(5000,console.log(`Server started on port ${PORT}`));
