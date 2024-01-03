@@ -17,7 +17,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
   const inputHandler = (e) => {
@@ -65,7 +65,7 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
 
-      navigate("/chat");
+      navigate("/chats");
     } catch (error) {
       toast({
         title: "Error Occured!",
@@ -110,26 +110,26 @@ const Login = () => {
         </InputGroup>
       </FormControl>
       <Button
-      colorScheme="blue"
-      width={"100%"}
-      style={{marginTop:15}}
-      onClick={submitHandler}
-      isLoading={loading}
+        colorScheme="blue"
+        width={"100%"}
+        style={{ marginTop: 15 }}
+        onClick={submitHandler}
+        isLoading={loading}
       >
         Log In
       </Button>
       <Button
-      colorScheme="red"
-      width={"100%"}
-      style={{marginTop:15}}
-      onClick={()=>{
-        setData({email:"guest@gmail.com", password:"1234"});
-      }}
+        colorScheme="red"
+        width={"100%"}
+        style={{ marginTop: 15 }}
+        onClick={() => {
+          setData({ email: "guest@gmail.com", password: "1234" });
+        }}
       >
         Get Guest User Credentials
       </Button>
     </VStack>
   );
-}
+};
 
-export default Login
+export default Login;

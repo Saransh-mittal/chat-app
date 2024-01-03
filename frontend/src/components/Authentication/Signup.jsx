@@ -91,8 +91,7 @@ const Signup = () => {
       setLoading(false);
       return;
     }
-    if(password !== cpassword)
-    {
+    if (password !== cpassword) {
       toast({
         title: "password not equal to confirm password",
         status: "error",
@@ -127,7 +126,7 @@ const Signup = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
 
-      navigate("/chat");
+      navigate("/chats");
     } catch (error) {
       toast({
         title: "Error Occured!",
